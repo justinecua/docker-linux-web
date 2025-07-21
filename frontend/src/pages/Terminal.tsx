@@ -33,12 +33,16 @@ const TerminalComponent = () => {
     if (el) {
       terminal.open(el);
       fitAddon.fit();
+      terminal.focus(); //  <‑‑ add this
       terminal.write(
         "\x1b[1;36mEstablishing secure connection to HACK4GOV mainframe...\x1b[0m\r\n"
       );
     }
 
-    const socket = new WebSocket("ws://localhost:8000/ws/terminal/");
+    const proto = window.location.protocol === "https:" ? "wss" : "ws";
+    const socket = new WebSocket(
+      `${proto}://${window.location.host}/ws/terminal/`
+    );
 
     socket.onopen = () => {
       setIsConnected(true);
@@ -98,7 +102,7 @@ const TerminalComponent = () => {
       </div>
 
       {/* Terminal Container */}
-      <div id="terminal" className="flex-grow w-full p-2" />
+      <div id="terminal" className="flex-grow w-full p-2" tabIndex={0} />
 
       {/* Terminal Footer */}
       <div className="bg-[#0a0a0a] p-3 border-t border-cyan-400/10 grid grid-cols-3 gap-4 text-xs">

@@ -24,17 +24,3 @@ services:
     container_name: hack4gov_frontend
     ports:
       - "5173:80"
-
-  nginx:
-    image: nginx:latest
-    container_name: hack4gov_nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/log/nginx:/var/log/nginx
-    depends_on:
-      - frontend
-      - backend
