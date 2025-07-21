@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.log
+*.env
+*.sqlite3
+db.sqlite3
+
+# Python packages
+.venv/
+venv/
+env/
+Pipfile.lock
+poetry.lock
+
+# Django
+*.migrations/
+.env
+staticfiles/
+media/
+
+# React / Vite / Node.js
+node_modules/
+dist/
+build/
+.vite/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docker
+*.pid
+*.sock
+*.tar
+.env.docker
+
+# Editors / IDEs
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Backup / temp
+*.bak
+*.swp
+*.tmp

@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7
+    container_name: hack4gov_redis
+
+  backend:
+    build: ./backend
+    container_name: hack4gov_backend
+    command: daphne -b 0.0.0.0 -p 8000 linuxProject.asgi:application
+    volumes:
+      - ./backend/linuxProject:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    environment:
+      - DEBUG=True
+      - PYTHONPATH=/app
+
+  frontend:
+    build: ./frontend
+    container_name: hack4gov_frontend
+    ports:
+      - "5173:80"
+
+  # nginx:
+  #   image: nginx:latest
+  #   container_name: hack4gov_nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx/conf.d:/etc/nginx/conf.d
+  #     - ./nginx/certs:/etc/nginx/certs
+  #     - ./nginx/logs:/var/log/nginx
+  #   depends_on:
+  #     - backend
+  #     - frontend
