@@ -1,0 +1,16 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    return 444;
+}
+
+server {
+    listen 443 ssl default_server;
+    server_name _;
+
+    ssl_certificate     /etc/letsencrypt/live/practicelinux.live/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/practicelinux.live/privkey.pem;
+
+    return 444;
+}
