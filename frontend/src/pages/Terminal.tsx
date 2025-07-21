@@ -38,7 +38,11 @@ const TerminalComponent = () => {
       );
     }
 
-    const socket = new WebSocket("ws://localhost:8000/ws/terminal/");
+    const socket = new WebSocket(
+      window.location.protocol === "https:"
+        ? "wss://practicelinux.live/ws/terminal/"
+        : "ws://practicelinux.live/ws/terminal/"
+    );
 
     socket.onopen = () => {
       setIsConnected(true);
