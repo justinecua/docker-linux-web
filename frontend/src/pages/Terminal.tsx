@@ -39,9 +39,10 @@ const TerminalComponent = () => {
       );
     }
 
-    const proto = window.location.protocol === "https:" ? "wss" : "ws";
     const socket = new WebSocket(
-      `${proto}://${window.location.host}/ws/terminal/`
+      window.location.protocol === "https:"
+        ? "wss://practicelinux.live/ws/terminal/"
+        : "ws://localhost:8000/ws/terminal/"
     );
 
     socket.onopen = () => {
