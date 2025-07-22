@@ -38,7 +38,7 @@ const TerminalComponent = () => {
       );
     }
 
-    const socket = new WebSocket("ws://localhost:8000/ws/terminal/");
+    const socket = new WebSocket(import.meta.env.VITE_WS_URL);
 
     socket.onopen = () => {
       setIsConnected(true);

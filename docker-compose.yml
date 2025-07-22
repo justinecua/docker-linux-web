@@ -25,16 +25,14 @@ services:
     ports:
       - "5173:80"
 
-  # nginx:
-  #   image: nginx:latest
-  #   container_name: hack4gov_nginx
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - ./nginx/conf.d:/etc/nginx/conf.d
-  #     - ./nginx/certs:/etc/nginx/certs
-  #     - ./nginx/logs:/var/log/nginx
-  #   depends_on:
-  #     - backend
-  #     - frontend
+  nginx:
+    image: nginx:latest
+    container_name: hack4gov_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - backend
+      - frontend
