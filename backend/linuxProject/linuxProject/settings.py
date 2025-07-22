@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-dev-key")
 DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1")
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["practicelinux.live"]
 
 
 # Application definition

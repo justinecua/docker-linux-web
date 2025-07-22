@@ -32,5 +32,16 @@ class TerminalConsumer(AsyncWebsocketConsumer):
         os.write(self.master, text_data.encode())
 
     async def disconnect(self, close_code):
-        if self.process:
-            self.process.terminate()
+        try:
+            if self.process:
+                self.process.terminate()
+                await self.process.wait()
+        except Exception as e:
+            print("Process termination error:", e)
+
+        try:
+            os.close(self.master)
+            os.close(self.slave)
+        except Exception as e:
+            print("PTY close error:", e)
+
