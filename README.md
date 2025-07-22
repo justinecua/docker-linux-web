@@ -4,7 +4,7 @@ A Dockerized full-stack web app for learning Linux and cybersecurity through CTF
 
 ## 🚀 Live Demo
 
-Visit: [https://practicelinux.live](https://practicelinux.live)
+Visit: [http://practicelinux.live](http://practicelinux.live)
 
 ## 🔧 Tech Stack
 
